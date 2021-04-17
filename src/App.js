@@ -48,7 +48,6 @@ const App = () => {
             <Fragment>
               <h2>Edit user</h2>
               <EditUserForm
-                editing={editing}
                 setEditing={setEditing}
                 currentUser={currentUser}
                 updateUser={updateUser}
