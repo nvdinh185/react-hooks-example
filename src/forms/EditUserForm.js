@@ -13,7 +13,6 @@ const EditUserForm = props => {
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-
     setUser({ ...user, [name]: value });
   }
 
@@ -21,8 +20,7 @@ const EditUserForm = props => {
     <form
       onSubmit={event => {
         event.preventDefault();
-
-        props.updateUser(user.id, user);
+        props.updateUser(user);
       }}
     >
       <label>Name</label>

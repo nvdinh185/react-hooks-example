@@ -37,9 +37,22 @@ MongoClient.connect(url, (err, db) => {
     });
 
     app.post("/add-user", (req, res) => {
-        // console.log(req.body.user);
         let user = req.body.user;
         dbo.collection("users").insertOne(user, function (err, res) { });
+        res.send(user);
+    })
+
+    app.post("/del-user", (req, res) => {
+        let id = req.body.id;
+        let myquery = { id: parseInt(id) };
+        dbo.collection("users").deleteOne(myquery, function (err, obj) { });
+        res.send([]);
+    })
+
+    app.post("/edit-user", (req, res) => {
+        var myquery = { id: parseInt(req.body.updatedUser.id) };
+        var newvalues = { $set: req.body.updatedUser };
+        dbo.collection("users").updateOne(myquery, newvalues, function (err, res) { });
         res.send([]);
     })
 

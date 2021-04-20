@@ -26,21 +26,23 @@ const App = () => {
     setAdding(true);
   }
 
-  const addUser = (user) => {
+  const addUser = async (user) => {
     user.id = users.length;
-    axios.post('http://localhost:8080/add-user', { user });
+    await axios.post('http://localhost:8080/add-user', { user });
     setUsers([...users, user]);
     setAdding(false);
   }
 
-  const deleteUser = (id) => {
+  const deleteUser = async (id) => {
     setEditing(false);
+    await axios.post('http://localhost:8080/del-user', { id });
     setUsers(users.filter((user) => user.id !== id));
   }
 
-  const updateUser = (id, updatedUser) => {
+  const updateUser = async (updatedUser) => {
     setEditing(false);
-    setUsers(users.map(user => (user.id === id ? updatedUser : user)));
+    await axios.post('http://localhost:8080/edit-user', { updatedUser });
+    setUsers(users.map(user => (user.id === updatedUser.id ? updatedUser : user)));
   }
 
   const editRow = (user) => {
