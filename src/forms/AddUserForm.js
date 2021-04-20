@@ -35,7 +35,8 @@ const AddUserForm = (props) => {
                 value={user.username}
                 onChange={handleInputChange}
             />
-            <button>Add new user</button>
+            <button>Add</button>
+            <button onClick={() => props.setAdding(false)} className="button muted-button">Cancel</button>
         </form>
     );
 }
