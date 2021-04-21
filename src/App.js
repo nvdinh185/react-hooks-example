@@ -6,11 +6,12 @@ import EditUserForm from './forms/EditUserForm'
 import axios from 'axios'
 
 const App = () => {
+  const urlServer = 'http://localhost:8080';
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await axios(`http://localhost:8080/get-users`);
+      const res = await axios(urlServer + '/get-users');
       setUsers(res.data);
     }
     fetchData();
@@ -28,20 +29,20 @@ const App = () => {
 
   const addUser = async (user) => {
     user.id = users.length;
-    await axios.post('http://localhost:8080/add-user', { user });
+    await axios.post(urlServer + '/add-user', { user });
     setUsers([...users, user]);
     setAdding(false);
   }
 
   const deleteUser = async (id) => {
     setEditing(false);
-    await axios.post('http://localhost:8080/del-user', { id });
+    await axios.post(urlServer + '/del-user', { id });
     setUsers(users.filter((user) => user.id !== id));
   }
 
   const updateUser = async (updatedUser) => {
     setEditing(false);
-    await axios.post('http://localhost:8080/edit-user', { updatedUser });
+    await axios.post(urlServer + '/edit-user', { updatedUser });
     setUsers(users.map(user => (user.id === updatedUser.id ? updatedUser : user)));
   }
 

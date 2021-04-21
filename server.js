@@ -22,16 +22,10 @@ app.listen(8080, () => console.log("Server is running in port 8080..."));
 MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     var dbo = db.db("learnJs");
-    var mang = [];
 
     app.get("/get-users", (req, res) => {
-        dbo.collection("users").find({}).toArray((err, result) => {
-            if (err) throw err;
-            for (let el of result) {
-                delete el._id;
-            }
-            mang = result;
-            // console.log(mang);
+        dbo.collection("users").find({}, { projection: { _id: 0 } }).toArray((err, result) => {
+            // console.log(result);
             res.send(result);
         })
     });
@@ -39,13 +33,13 @@ MongoClient.connect(url, (err, db) => {
     app.post("/add-user", (req, res) => {
         let user = req.body.user;
         dbo.collection("users").insertOne(user, function (err, res) { });
-        res.send(user);
+        res.send([]);
     })
 
     app.post("/del-user", (req, res) => {
         let id = req.body.id;
         let myquery = { id: parseInt(id) };
-        dbo.collection("users").deleteOne(myquery, function (err, obj) { });
+        dbo.collection("users").deleteOne(myquery, function (err, res) { });
         res.send([]);
     })
 
