@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+const MongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/";
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -14,41 +14,42 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static("public"));
-app.set("view engine", "ejs");
-app.set("views", "./views");
 app.listen(8080, () => console.log("Server is running in port 8080..."));
 
 MongoClient.connect(url, (err, db) => {
     if (err) throw err;
-    var dbo = db.db("learnJs");
+    const dbo = db.db("learnJs");
 
     app.get("/get-users", (req, res) => {
-        dbo.collection("users").find({}, { projection: { _id: 0 } }).toArray((err, result) => {
-            // console.log(result);
-            res.send(result);
-        })
+        dbo.collection("users").find({}, { projection: { _id: 0 } }).toArray((err, data) => {
+            // console.log(data);
+            res.send(data);
+        });
     });
 
     app.post("/add-user", (req, res) => {
         let user = req.body.user;
-        dbo.collection("users").insertOne(user, function (err, res) { });
-        res.send([]);
-    })
+        dbo.collection("users").insertOne(user, function (err, data) {
+            res.send();
+        });
+
+    });
 
     app.post("/del-user", (req, res) => {
         let id = req.body.id;
         let myquery = { id: parseInt(id) };
-        dbo.collection("users").deleteOne(myquery, function (err, res) { });
-        res.send([]);
-    })
+        dbo.collection("users").deleteOne(myquery, function (err, data) {
+            res.send();
+        });
+    });
 
     app.post("/edit-user", (req, res) => {
         var myquery = { id: parseInt(req.body.updatedUser.id) };
         var newvalues = { $set: req.body.updatedUser };
-        dbo.collection("users").updateOne(myquery, newvalues, function (err, res) { });
-        res.send([]);
-    })
+        dbo.collection("users").updateOne(myquery, newvalues, function (err, data) {
+            res.send();
+        });
+    });
 
     // db.close();
 });

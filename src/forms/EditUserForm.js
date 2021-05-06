@@ -1,15 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react';
 
-const EditUserForm = props => {
+const EditUserForm = (props) => {
   const [user, setUser] = useState(props.currentUser);
-
-  useEffect(
-    () => {
-      setUser(props.currentUser);
-    },
-    [props]
-  )
-  // You can tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]
 
   const handleInputChange = event => {
     const { name, value } = event.target;

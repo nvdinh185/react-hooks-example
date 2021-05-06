@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import UserTable from './tables/UserTable'
-import AddUserForm from './forms/AddUserForm'
-import EditUserForm from './forms/EditUserForm'
+import { Fragment, useState, useEffect } from 'react';
+import UserTable from './tables/UserTable';
+import AddUserForm from './forms/AddUserForm';
+import EditUserForm from './forms/EditUserForm';
 
-import axios from 'axios'
+import axios from 'axios';
 
 const App = () => {
   const urlServer = 'http://localhost:8080';
@@ -17,9 +17,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  const initialFormState = { id: null, name: '', username: '' };
-
-  const [currentUser, setCurrentUser] = useState(initialFormState);
+  const [currentUser, setCurrentUser] = useState();
   const [editing, setEditing] = useState(false);
   const [adding, setAdding] = useState(false);
 
