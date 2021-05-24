@@ -33,6 +33,7 @@ const App = () => {
   }
 
   const deleteUser = async (id) => {
+    setAdding(false);
     setEditing(false);
     await axios.post(urlServer + '/del-user', { id });
     setUsers(users.filter((user) => user.id !== id));
