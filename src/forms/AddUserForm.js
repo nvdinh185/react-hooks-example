@@ -1,14 +1,12 @@
-import { useState } from 'react';
-
 const AddUserForm = (props) => {
 
-    const initialFormState = { id: null, name: '', username: '' };
-    const [user, setUser] = useState(initialFormState);
+    let user = {};
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
 
-        setUser({ ...user, [name]: value });
+        user = { ...user, [name]: value };
+        // console.log(user);
     }
 
     return (
@@ -18,7 +16,6 @@ const AddUserForm = (props) => {
                 if (!user.name || !user.username) return;
 
                 props.addUser(user);
-                setUser(initialFormState);
             }}
         >
             <label>Name</label>
