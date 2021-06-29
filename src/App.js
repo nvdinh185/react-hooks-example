@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import UserTable from './tables/UserTable';
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm';
@@ -56,19 +56,19 @@ const App = () => {
       <div className="flex-row">
         <div className="flex-large">
           {editing ? (
-            <Fragment>
+            <>
               <h2>Edit user</h2>
               <EditUserForm
                 setEditing={setEditing}
                 currentUser={currentUser}
                 updateUser={updateUser}
               />
-            </Fragment>
+            </>
           ) : adding ? (
-            <Fragment>
+            <>
               <h2>Add user</h2>
               <AddUserForm setAdding={setAdding} addUser={addUser} />
-            </Fragment>
+            </>
           ) : <button onClick={addNewUser}>Add new user</button>}
         </div>
         <div className="flex-large">
