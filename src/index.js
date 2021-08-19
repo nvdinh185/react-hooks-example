@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
-// import App from './components/comment';
-// import App from './state/clock';
-import App from './App';
+// import App from './App';
+// import App from './event/actionLink2';
+import App from './conditional/page';
 
 ReactDOM.render(<App />, document.getElementById('root'));
