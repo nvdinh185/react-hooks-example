@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function formatDate(date) {
     return date.toLocaleDateString();
 };
@@ -48,11 +50,14 @@ const comment = {
 const App = () => {
 
     return (
-        <Comment
-            date={comment.date}
-            text={comment.text}
-            author={comment.author}
-        />
+        <>
+            <Comment
+                date={comment.date}
+                text={comment.text}
+                author={comment.author}
+            />
+            Go to <Link to="/clock">Clock</Link>
+        </>
     );
 }
 
