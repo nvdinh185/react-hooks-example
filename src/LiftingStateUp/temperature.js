@@ -47,7 +47,7 @@ function TemperatureInput(props) {
     );
 }
 
-function Calculator(props) {
+function Calculator() {
     const [state, setState] = useState({ temperature: '', scale: '' });
 
     const temperature = state.temperature;
@@ -64,7 +64,7 @@ function Calculator(props) {
     }
 
     return (
-        <div>
+        <>
             <TemperatureInput
                 scale="c"
                 temperature={celsius}
@@ -75,7 +75,7 @@ function Calculator(props) {
                 onTemperatureChange={handleFahrenheitChange} />
             <BoilingVerdict
                 celsius={parseFloat(celsius)} />
-        </div>
+        </>
     );
 }
 
