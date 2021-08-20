@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-// import App from './App';
-import App from './intro/App';
+import App from './App2';
+// import App from './intro/App2';
 // import Example from './overview/Example';
-import Example from './effect/Example2';
+// import Example from './effect/Example';
 
-ReactDOM.render(<Example />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

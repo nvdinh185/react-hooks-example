@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
-function Example2() {
+function Example() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
         document.title = `You clicked ${count} times`;
-        console.log(`You clicked ${count} times`);
+        console.log(`You clicked ${count} times - Example2`);
     });
 
     return (
@@ -14,8 +15,10 @@ function Example2() {
             <button onClick={() => setCount(count + 1)}>
                 Click me
             </button>
+            <br />
+            Go to <Link to="/">Example1</Link>
         </div>
     );
 }
 
-export default Example2
+export default Example
