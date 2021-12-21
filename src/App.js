@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import UserTable from './tables/UserTable';
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm';
+import { v4 as uuidv4 } from 'uuid';
 
 import axios from 'axios';
 
@@ -26,7 +27,7 @@ const App = () => {
   }
 
   const addUser = async (user) => {
-    user.id = users.length;
+    user.id = uuidv4();
     await axios.post(urlServer + '/add-user', { user });
     setUsers([...users, user]);
     setAdding(false);
