@@ -9,13 +9,13 @@ const UserTable = (props) => (
         </thead>
         <tbody>
             {props.users.length > 0 ? (
-                props.users.map((user) => (
+                props.users.map(user => (
                     <tr key={user.id}>
                         <td>{user.name}</td>
                         <td>{user.username}</td>
                         <td>
                             <button
-                                onClick={() => props.editRow(user)}
+                                onClick={() => props.editUser(user)}
                                 className="button muted-button"
                             >Edit</button>
                             <button
