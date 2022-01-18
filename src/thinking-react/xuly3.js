@@ -93,12 +93,13 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <form>
+            <form style={{ border: '2px solid red' }}>
                 <input
                     type="text"
                     placeholder="Search..."
                     value={this.props.filterText}
                     onChange={this.handleFilterTextChange}
+                    style={{ width: '160px' }}
                 />
                 <p>
                     <input
@@ -140,7 +141,7 @@ class FilterableProductTable extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{ border: '1px solid violet', width: '170px' }}>
                 <SearchBar
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}
