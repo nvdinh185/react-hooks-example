@@ -7,7 +7,7 @@ function Example() {
     useEffect(() => {
         document.title = `You clicked ${count} times`;
         console.log(`You clicked ${count} times - Example2`);
-    });
+    }, [count]);
 
     return (
         <div>

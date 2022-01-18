@@ -16,7 +16,7 @@ class Example extends React.Component {
 
     timerID;
     componentDidMount() {
-        this.timerID = setInterval(() => this.tick(), 3000);
+        this.timerID = setInterval(() => this.tick(), 5000);
         document.title = `You clicked ${this.state.count} times`;
         console.log(`You clicked ${this.state.count} times1 - Example`);
     }
