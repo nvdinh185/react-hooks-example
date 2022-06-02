@@ -1,7 +1,8 @@
 function ActionLink() {
     function handleClick(e) {
+        console.log(e);
         e.preventDefault();
-        console.log('The link was clicked.');
+        console.log('The link was clicked2.');
     }
 
     return (
