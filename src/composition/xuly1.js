@@ -8,7 +8,7 @@ function FancyBorder(props) {
 
 function WelcomeDialog() {
     return (
-        <FancyBorder color="blue">
+        <FancyBorder color="red">
             <h1 className="Dialog-title">
                 Welcome
             </h1>

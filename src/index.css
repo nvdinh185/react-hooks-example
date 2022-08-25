@@ -7,6 +7,10 @@
   border-color: blue;
 }
 
+.FancyBorder-red {
+  border-color: red;
+}
+
 .Dialog-title {
   margin: 0;
   font-family: sans-serif;

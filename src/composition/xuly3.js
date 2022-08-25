@@ -8,7 +8,7 @@ function FancyBorder(props) {
 
 function Dialog(props) {
     return (
-        <FancyBorder color="blue">
+        <FancyBorder color={props.color}>
             <h1 className="Dialog-title">
                 {props.title}
             </h1>
@@ -23,7 +23,8 @@ function WelcomeDialog() {
     return (
         <Dialog
             title="Welcome"
-            message="Thank you for visiting our spacecraft!" />
+            message="Thank you for visiting our spacecraft!"
+            color="blue" />
     );
 }
 
