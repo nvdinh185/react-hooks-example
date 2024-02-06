@@ -16,28 +16,24 @@ const App = () => {
   const [editing, setEditing] = useState(false);
   const [adding, setAdding] = useState(false);
 
-  const addNewUser = () => {
-    setAdding(true);
-  }
-
-  const addUser = async (user) => {
+  const handleAddUser = async (user) => {
     user.id = users.length;
     setUsers([...users, user]);
     setAdding(false);
   }
 
-  const deleteUser = async (id) => {
+  const hadleDeleteUser = async (id) => {
     setAdding(false);
     setEditing(false);
     setUsers(users.filter((user) => user.id !== id));
   }
 
-  const updateUser = async (updatedUser) => {
+  const handleUpdateUser = async (updatedUser) => {
     setEditing(false);
     setUsers(users.map(user => (user.id === updatedUser.id ? updatedUser : user)));
   }
 
-  const editRow = (user) => {
+  const callUpdateUser = (user) => {
     setEditing(true);
     setCurrentUser({ id: user.id, name: user.name, username: user.username });
   }
@@ -53,19 +49,19 @@ const App = () => {
               <EditUserForm
                 setEditing={setEditing}
                 currentUser={currentUser}
-                updateUser={updateUser}
+                updateUser={handleUpdateUser}
               />
             </>
           ) : adding ? (
             <>
               <h2>Add user</h2>
-              <AddUserForm setAdding={setAdding} addUser={addUser} />
+              <AddUserForm setAdding={setAdding} addUser={handleAddUser} />
             </>
-          ) : <button onClick={addNewUser}>Add new user</button>}
+          ) : <button onClick={() => setAdding(true)}>Add new user</button>}
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
+          <UserTable users={users} editUser={callUpdateUser} deleteUser={hadleDeleteUser} />
         </div>
       </div>
     </div>
