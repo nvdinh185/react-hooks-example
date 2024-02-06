@@ -5,8 +5,8 @@ import EditUserForm from './forms/EditUserForm';
 
 const intialUsers = [
   { id: 0, name: 'NodeJS', username: 'floppydiskette' },
-  { id: 1, name: 'Angular', username: 'siliconeidolon1' },
-  { id: 2, name: 'ReactJS', username: 'benisphere1' }
+  { id: 1, name: 'Angular', username: 'siliconeidolon' },
+  { id: 2, name: 'ReactJS', username: 'benisphere' }
 ];
 
 const App = () => {
