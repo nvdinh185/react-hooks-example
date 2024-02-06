@@ -1,21 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import UserTable from './tables/UserTable';
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm';
 
-import axios from 'axios';
+const intialUsers = [
+  { id: 0, name: 'NodeJS', username: 'floppydiskette' },
+  { id: 1, name: 'Angular', username: 'siliconeidolon1' },
+  { id: 2, name: 'ReactJS', username: 'benisphere1' }
+];
 
 const App = () => {
-  const urlServer = 'http://localhost:8080';
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await axios(urlServer + '/get-users');
-      setUsers(res.data);
-    }
-    fetchData();
-  }, []);
+  const [users, setUsers] = useState(intialUsers);
 
   const [currentUser, setCurrentUser] = useState();
   const [editing, setEditing] = useState(false);
@@ -27,7 +22,6 @@ const App = () => {
 
   const addUser = async (user) => {
     user.id = users.length;
-    await axios.post(urlServer + '/add-user', { user });
     setUsers([...users, user]);
     setAdding(false);
   }
@@ -35,13 +29,11 @@ const App = () => {
   const deleteUser = async (id) => {
     setAdding(false);
     setEditing(false);
-    await axios.post(urlServer + '/del-user', { id });
     setUsers(users.filter((user) => user.id !== id));
   }
 
   const updateUser = async (updatedUser) => {
     setEditing(false);
-    await axios.post(urlServer + '/edit-user', { updatedUser });
     setUsers(users.map(user => (user.id === updatedUser.id ? updatedUser : user)));
   }
 
